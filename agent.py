@@ -25,6 +25,8 @@ async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
         stt = openai.STT.with_azure(
             model="gpt-4o-transcribe",
+            api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+            api_version="2025-03-01-preview",
         ),
         llm=openai.LLM.with_azure(
             azure_deployment="gpt-5-mini",
@@ -49,7 +51,7 @@ async def entrypoint(ctx: agents.JobContext):
     )
 
     await session.generate_reply(
-        instructions="Greet the user and offer your assistance."
+        instructions="Greet the user with yo yo"
     )
 
 
