@@ -29,10 +29,10 @@ async def entrypoint(ctx: agents.JobContext):
             api_version="2025-03-01-preview",
         ),
         llm=openai.LLM.with_azure(
-            azure_deployment="gpt-5-mini",
+            azure_deployment="gpt-4o",
             azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"), # or AZURE_OPENAI_ENDPOINT
             api_key=os.getenv("AZURE_OPENAI_API_KEY"), # or AZURE_OPENAI_API_KEY
-            api_version="2024-10-01-preview", # or OPENAI_API_VERSION
+            api_version="2024-12-01-preview", # or OPENAI_API_VERSION
         ),
         tts=openai.TTS.with_azure(
             model="gpt-4o-mini-tts",
@@ -50,9 +50,6 @@ async def entrypoint(ctx: agents.JobContext):
         ),
     )
 
-    await session.generate_reply(
-        instructions="Greet the user with yo yo"
-    )
 
 
 if __name__ == "__main__":
